@@ -17,26 +17,31 @@ public class Game {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Integer title;
+	private String title;
 	
 	@Column(name = "game_year")
 	private Integer year;
 	private String genre;
-	private String platform;
+	private String platforms;
+	private Double score;
+	private String imgUrl;
 	private String shortDescription;
+	@Column(columnDefinition = "TEXT")
 	private String longDescription;
 	
 	public Game() {
 		
 	}
 
-	public Game(Long id, Integer title, String genre, String platform, String shortDescription,
-			String longDescription) {
+	public Game(Long id, String title, String genre, String platforms, Double score, String imgUrl,
+			    String shortDescription,String longDescription) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.genre = genre;
-		this.platform = platform;
+		this.platforms = platforms;
+		this.score = score;
+		this.imgUrl = imgUrl;
 		this.shortDescription = shortDescription;
 		this.longDescription = longDescription;
 	}
@@ -49,11 +54,11 @@ public class Game {
 		this.id = id;
 	}
 
-	public Integer getTitle() {
+	public String getTitle() {
 		return title;
 	}
 
-	public void setTitle(Integer title) {
+	public void setTitle(String title) {
 		this.title = title;
 	}
 
@@ -65,12 +70,28 @@ public class Game {
 		this.genre = genre;
 	}
 
-	public String getPlatform() {
-		return platform;
+	public String getPlatforms() {
+		return platforms;
 	}
 
-	public void setPlatform(String platform) {
-		this.platform = platform;
+	public void setPlatforms(String platforms) {
+		this.platforms = platforms;
+	}
+	
+	public Double getScore() {
+		return score;
+	}
+
+	public void setScore(Double score) {
+		this.score = score;
+	}
+
+	public String getImgUrl() {
+		return imgUrl;
+	}
+
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
 	}
 
 	public String getShortDescription() {
@@ -89,6 +110,7 @@ public class Game {
 		this.longDescription = longDescription;
 	}
 
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
