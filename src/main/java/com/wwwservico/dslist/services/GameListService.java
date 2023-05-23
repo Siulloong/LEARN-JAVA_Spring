@@ -1,6 +1,7 @@
 package com.wwwservico.dslist.services;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,8 @@ public class GameListService {
 	@Transactional(readOnly = true)
 	public List<GameListDTO> findAll(){
 		List<GameList> result = gameListRepository.findAll();
-		List<GameListDTO> dto = result.stream().map(x -> new GameListDTO(x)).toList();
+	
+		List<GameListDTO> dto = ((Stream<GameListDTO>) result.stream().map(x -> new GameListDTO(x))).toList();
 		return dto;
 	}
 
